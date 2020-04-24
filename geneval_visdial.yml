@@ -1,0 +1,18 @@
+name: geneval_visdial
+channels:
+  - pytorch
+  - anaconda
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.6
+  - nltk=3.4
+  - gensim=3.8.0
+  - inflect=0.2.5
+  - numpy=1.15.4
+  - tensorflow=1.12.0
+  - pytorch=1.0.1=py3.6_cuda8.0.61_cudnn7.1.2_0
+  - torchvision=0.2.1
+  - pip:
+    - bert-serving-client==1.8.1
+    - bert-serving-server==1.8.1
