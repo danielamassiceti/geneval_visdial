@@ -43,7 +43,7 @@ Answer reference sets generated using other clustering methods (`S`, `M` and `G`
 | `M`  | [`refs_M_train.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_M_train.json) | [`refs_M_val.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_M_val.json)  | Meanshift clustering
 | `G`  | [`refs_G_train.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_G_train.json) | [`refs_G_val.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_G_val.json)  | Agglomerative clusting (n=5)
 
-You can use `get_clusters.py` to generate your own answer reference sets using one of the prescribed methods.
+<!--You can use `get_clusters.py` to generate your own answer reference sets using one of the prescribed methods.-->
 
 ### 3. Download pre-trained BERT model and start `bert-as-a-service` server
 
