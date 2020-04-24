@@ -60,7 +60,7 @@ bert-serving-start  -model_dir <bert_model_dir>/uncased_L-12_H-768_A-12 -num_wor
 
 The evaluation script uses pre-trained [FastText](https://fasttext.cc) word vectors. Download and unzip the English [`bin+text`](https://dl.fbaipublicfiles.com/fasttext/vectors-wiki/wiki.en.zip) FastText model pre-trained on Wikipedia. Save the `wiki.en.bin` file to `<fasttext_model_dir>`.
 
-### 4. Run evaluation
+### 5. Run evaluation
 
 The evaluation will compute CIDEr (n-grams 1 to 4), METEOR, BERT-L2 (L2 distance), BERT-CS (cosine similarity), FastText-L2 and FastText-CS between each generation and its corresponding set of reference answers.
 
