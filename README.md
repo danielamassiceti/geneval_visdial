@@ -34,16 +34,17 @@ See [`gens.json`](https://github.com/danielamassiceti/cca_visdial/blob/geneval_v
 
 ### 2. Download _DenseVisDial_ answer reference sets
 
-Download [`refs_S_val.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_S_val.json) and save it in `densevisdial` directory. These are the answer reference sets for the entire VisDial _validation_ set, automatically generated using the `S` or \Sigma clustering method. This method yields the best overlap with human-annotated reference sets, and we use it for all generative evaluation metrics reported in the paper.
+Download [`refs_S_full_val.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_S_full_val.json) and save it in `densevisdial` directory. These are the answer reference sets for the entire VisDial _validation_ set, automatically generated using the `S` or \Sigma clustering method. This method yields the best overlap with human-annotated reference sets, and we use it for all generative evaluation metrics reported in the paper.
 
-Answer reference sets generated using other clustering methods (`S`, `M` and `G`) can be downloaded for the VisDial _train_ and _validation_ sets) here:
+Answer reference sets generated using other clustering methods (`S`, `M` and `G`) and the human-annotated reference sets (`H`) can be downloaded for the VisDial _train_ and _validation_ sets) here:
 | C | Train | Val | Description |
 | ------------- | ------------- | ------------- | ------------- |
-| `S`  | [`refs_S_train.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_S_train.json) | [`refs_S_val.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_S_val.json)  | `\Sigma` clustering (based on standard deviation of correlations)
-| `M`  | [`refs_M_train.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_M_train.json) | [`refs_M_val.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_M_val.json)  | Meanshift clustering
-| `G`  | [`refs_G_train.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_G_train.json) | [`refs_G_val.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_G_val.json)  | Agglomerative clusting (n=5)
+| `S`  | [`refs_S_full_train.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_S_full_train.json), [`refs_S_human_train.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_S_human_train.json) | [`refs_S_full_val.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_S_full_val.json), [`refs_S_human_val.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_S_human_val.json)  | `\Sigma` clustering (based on standard deviation of correlations)
+| `M`  | [`refs_M_full_train.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_M_full_train.json), [`refs_M_human_train.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_M_human_train.json) | [`refs_M_full_val.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_M_full_val.json), [`refs_M_human_val.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_M_human_val.json)  | Meanshift clustering
+| `G`  | [`refs_G_full_train.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_G_full_train.json), [`refs_G_human_train.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_G_human_train.json)| [`refs_G_full_val.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_G_full_val.json), [`refs_G_human_val.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_G_human_val.json)  | Agglomerative clustering (n=5)
+| `H`  | [`refs_H_human_train.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_H_human_train.json) | [`refs_H_human_val.json`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/refs_H_human_val.json) | Human-annotated reference sets (relevance scores > 0)
 
-<!--You can use `get_clusters.py` to generate your own answer reference sets using one of the prescribed methods.-->
+See [How to generate answer reference sets](https://github.com/danielamassiceti/cca_visdial/blob/geneval_visdial/README.md#how-to-generate-answer-reference-sets) to generate your own answer reference sets using one of the prescribed methods.
 
 ### 3. Download pre-trained BERT model and start `bert-as-a-service` server
 
@@ -58,7 +59,7 @@ bert-serving-start  -model_dir <bert_model_dir>/uncased_L-12_H-768_A-12 -num_wor
 
 ### 4. Download pre-trained FastText word vectors
 
-The evaluation script uses pre-trained [FastText](https://fasttext.cc) word vectors. Download and unzip the English [`bin+text`](https://dl.fbaipublicfiles.com/fasttext/vectors-wiki/wiki.en.zip) FastText model pre-trained on Wikipedia. Save the `wiki.en.bin` file to `<fasttext_model_dir>`.
+The evaluation script uses pre-trained [FastText](https://fasttext.cc) word vectors. Download and unzip the English [`bin+text`](https://dl.fbaipublicfiles.com/fasttext/vectors-wiki/wiki.en.zip) FastText model pre-trained on Wikipedia. Save the `wiki.en.bin` file as `<fasttext_model_dir>/fasttext.wiki.en.bin`.
 
 ### 5. Run evaluation
 
@@ -66,13 +67,62 @@ The evaluation will compute CIDEr (n-grams 1 to 4), METEOR, BERT-L2 (L2 distance
 
 ```bash
 python evaluate.py --generations gens.json --references densevisdial/refs_S_val.json> \
-                   --fast_text_model <fasttext_model_dir>/wiki.en.bin
+                   --fast_text_model <fasttext_model_dir>/fasttext.wiki.en.bin
 ```
 
-### TODO
+## How to generate answer reference sets
 
-* Provide DenseVisDial annotations for only human-annotated train and validation sets
-* Add code for generating clusters 
+You can generate the answer reference sets yourself using clustering methods `S`, `M`, and `G`.
+
+### 1. Prepare VisDial dataset
+
+Download and unzip the dialogue `.json` files from:
+* [`visdial_1.0_train.zip`](https://www.dropbox.com/s/ix8keeudqrd8hn8/visdial_1.0_train.zip?dl=1)
+* [`visdial_1.0_val.zip`](https://www.dropbox.com/s/ibs3a0zhw74zisc/visdial_1.0_val.zip?dl=1)
+
+Download the `.json` files with human-annotated scores:
+* [`visdial_1.0_val_dense_annotations.json`](https://www.dropbox.com/s/3knyk09ko4xekmc/visdial_1.0_val_dense_annotations.json?dl=1)
+* [`visdial_1.0_train_dense_sample.json`](https://www.dropbox.com/s/1ajjfpepzyt3q4m/visdial_1.0_train_dense_sample.json?dl=1) (you will need to rename this `visdial_1.0_train_dense_annotations.json`)
+
+Save all these `.jsons` to `<dataset_root>/1.0/`. 
+
+Download and unzip the FastText English [`bin+text`](https://dl.fbaipublicfiles.com/fasttext/vectors-wiki/wiki.en.zip) model pre-trained on Wikipedia. Save the `wiki.en.bin` file as `<fasttext_model_dir>/fasttext.wiki.en.bin`.
+
+The `compute_clusters.py` script will automatically load and pre-process the data. This may take 10-15 minutes. If you prefer, you can download the pre-processed features to `<dataset_root>/1.0/` directly:
+* Train QAs: [`train_processed_S16_D10_woTrue_whsTrue.zip`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/train_processed_S16_D10_woTrue_whsTrue.zip)
+* Validation QAs: [`val_processed_S16_D10_woTrue_whsTrue.zip`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/val_processed_S16_D10_woTrue_whsTrue.zip)
+* Pre-processed vocabulary: [`vocab_visdial_v1.0_train.pt`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/vocab_visdial_v1.0_train.pt)
+* Pre-processed word vectors: [`fasttext.wiki.en.bin_vocab_vecs.pt`](https://www.robots.ox.ac.uk/~daniela/research/geneval_visdial/static/densevisdial/fasttext.wiki.en.bin_vocab_vecs.pt)
+
+### 2. Generate clusters
+
+You can now generate clusters using:
+```bash
+source activate geneval_visdial
+python clusters/compute_clusters.py --dataset_root <dataset_root> \
+                                    --fast_text_model <fasttext_model_dir>/fasttext.wiki.en.bin
+                                    --gpu 1 \
+                                    --cca QA_human_trainval \
+                                    --eval_set full \
+                                    --cluster_method S
+```
+
+This will compute clusters on the _full_ VisDial dataset (both train and validation sets) using the `S` clustering method and save the clusters in `./results` as `refs_S_full_train.json` and `refs_S_full_val.json`. If you want to compute clusters for only the subset of VisDial with human-annotated reference sets, use `--eval_set human`.
+
+The `--cca` flag specifies the data to train the CCA model:
+* `QA_human_train` trains on all answers with human-annotated relevance scores > 0 and their corresponding questions in the VisDial _train_ set.
+* `QA_human_trainval` trains on all answers with human-annotated relevance scores > 0 and their corresponding questions in the VisDial _trainval_ set.
+* `QA_full_train` trains on all ground-truth answers and their corresponding questions in the VisDial _train_ set.
+* `QA_full_trainval` trains on all ground-truth answers and their corresponding questions in the VisDial _trainval_ set.
+
+We use these differently depending on the evaluation set.
+
+For `--eval_set human`:
+* Table 4 (left), Table 6: we use `--QA_human_train --cluster_method H` to compute the human-annotated reference sets. We report overlap and embedding metrics for generated answers and these sets on the _validation_ subset, `\mathcal{H}_v`
+* Table 1, Table 8 (`(A_gt, \tilde{A})` rows): we use `--QA_human_train` (CCA-QA*) and `--QA_full_train` (CCA-QA) to compute the overlap of the automatic reference sets `--cluster_method {M,S,G}` with the human-annotated reference sets (`H`).
+
+For `--eval_set full`:
+* Table 4 (right) and Table 7: we use `--QA_human_trainval --cluster_method S` to compute the automatic reference sets. We report overlap and embedding metrics for generated answers and these sets on the full _validation_ set.
 
 ## Citation
 
