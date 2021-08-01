@@ -90,7 +90,7 @@ Download and unzip the FastText English [`bin+text`](https://dl.fbaipublicfiles.
 
 The `compute_clusters.py` script will automatically load and pre-process the data. This may take 10-15 minutes. If you prefer, you can download the pre-processed features to `<dataset_root>/1.0/` directly:
 * Train QAs: [`train_processed_S16_D10_woTrue_whsTrue.zip`](https://drive.google.com/uc?export=download&id=19qYK-i9ASSVmyN-n7gNs_7IEqqqUPjsP)
-* Validation QAs: [`val_processed_S16_D10_woTrue_whsTrue.zip`](hhttps://drive.google.com/uc?export=download&id=1NVoWCX691yH_bXmMkAGSHuOBNNT5Tn-f)
+* Validation QAs: [`val_processed_S16_D10_woTrue_whsTrue.zip`](https://drive.google.com/uc?export=download&id=1NVoWCX691yH_bXmMkAGSHuOBNNT5Tn-f)
 * Pre-processed vocabulary: [`vocab_visdial_v1.0_train.pt`](https://drive.google.com/uc?export=download&id=1h48U0KP2y72kYbueNPBUyCQXW0F3JV59)
 * Pre-processed word vectors: [`fasttext.wiki.en.bin_vocab_vecs.pt`](https://drive.google.com/uc?export=download&id=1vMAPwk7EpjUaBwx3i_2xhW0wcaP5jCO4)
 
